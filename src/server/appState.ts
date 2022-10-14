@@ -4,7 +4,6 @@ import { recoilPersist } from "recoil-persist";
 const { persistAtom } = recoilPersist();
 const state = atom({
   key: "fetchedLaunches",
-  // default: <any[]>[],
   default: <LaunchEl[]>[],
 });
 const favsState = atom({

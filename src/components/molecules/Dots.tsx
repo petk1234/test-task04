@@ -1,25 +1,20 @@
 import styled from "styled-components";
-import { EnterActiveDot } from "../atoms/EnterActiveDot";
+import EnterActiveDot from "../atoms/ActiveDot";
 const EnterActiveDotsStyled = styled.ul`
   display: flex;
   list-style: none;
+  justify-content: center;
 `;
 
 type EnterActiveDotsProps = {
   activeCircle: number | undefined;
 };
 
-export default function EnterActiveDots({
-  activeCircle,
-}: EnterActiveDotsProps) {
+export default function Dots({ activeCircle }: EnterActiveDotsProps) {
   return (
     <EnterActiveDotsStyled>
       {[0, 1, 2].map((el) => (
-        <EnterActiveDot
-          key={el}
-          el={el}
-          activeCircle_={activeCircle}
-        ></EnterActiveDot>
+        <EnterActiveDot key={el} el={el} circle={activeCircle} />
       ))}
     </EnterActiveDotsStyled>
   );

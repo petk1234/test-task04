@@ -1,17 +1,21 @@
-import React from "react";
-import Header from "./components/header/Header";
-import Slider from "./components/organisms/Slider";
-import FavouritePage from "./components/favourites/FavouritePage";
-import { useSetRecoilState, useRecoilState } from "recoil";
-import { state } from "./server/serverState";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { currentPage } from "./server/appState";
+import HomePage from "./components/pages/HomePage";
+import FavouritePage from "./components/pages/FavouritePage";
+import "./styles.css";
+import { Route, Routes, useNavigate } from "react-router-dom";
 function App() {
-  const [launchesList, setLaunchesList] = useRecoilState(state);
+  const [pageType, setCurrentPage] = useRecoilState(currentPage);
+  const navigate = useNavigate();
+  useEffect(() => {
+    setCurrentPage("");
+    navigate("/");
+  }, []);
   return (
     <div className="App">
-      <Header />
       <Routes>
-        <Route path="/" element={<Slider />}></Route>
+        <Route path="/" element={<HomePage />}></Route>
         <Route path="/favourites" element={<FavouritePage />}></Route>
       </Routes>
     </div>
